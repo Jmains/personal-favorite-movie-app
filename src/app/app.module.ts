@@ -21,14 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
-export const config = {
-  apiKey: "AIzaSyBqd5Vkcol2NNp1VtmGv5ToujDkisjaXbg",
-  authDomain: "favorite-movie-app-5360e.firebaseapp.com",
-  databaseURL: "https://favorite-movie-app-5360e.firebaseio.com",
-  projectId: "favorite-movie-app-5360e",
-  storageBucket: "favorite-movie-app-5360e.appspot.com",
-  messagingSenderId: "608220002148"
-};
+
 
 @NgModule({
   declarations: [
@@ -47,7 +40,7 @@ export const config = {
     AngularFireAuthModule,
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(config),
+    //AngularFireModule.initializeApp(config),
     ReactiveFormsModule,
     FormsModule
   ],
