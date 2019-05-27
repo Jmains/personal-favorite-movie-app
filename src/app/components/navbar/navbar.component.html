@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark" 
+style="background-color: rgba(0, 0, 0, 0.856)" 
+*ngIf="authService.user$ | async as user">
+
+    <div class="navbar-brand">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img [src]="user.photoURL" 
+                width="40" 
+                height="40" 
+                class="d-inline-block align-top rounded-circle" 
+                alt="user image"
+                style="cursor: pointer"
+                (click)="goToHome()">
+            </li>
+            
+        </ul> 
+    </div>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" style="color: rgb(214, 211, 211); 
+            font-size: 15px;
+            cursor: pointer" 
+            (click)="goToHome()">
+                    Welcome {{user.displayName}}
+            </a>
+        </li>   
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <button class="btn btn-primary"(click)="signOut()" style="
+            height: 25px;
+            width: 60px;
+            font-size: 10px;">Sign out </button>
+        </li>
+    </ul> 
+</nav>

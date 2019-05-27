@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div class="container">
+
+    <button class="btn btn-primary"
+    (click)="addMovie()"
+    style="margin: 20px 0px;
+    font-size: 12px" >Add movie to collection
+    </button>
+
+    <app-add-movie-form *ngIf="addFormSelected"
+    (selectedEvent)="receiveIsSelectedEvent($isSelected)"
+    ></app-add-movie-form>
+
+    <app-edit-movie-form *ngIf="editFormSelected" 
+    (selectedEvent)="receiveIsSelectedEvent($isSelected)" 
+    [movieSelected]="movie"
+    id="editForm"></app-edit-movie-form>
+
+    <h1 style="margin: 20px 0;">Your Movie collection</h1>
+    <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+    <div *ngFor="let movie of movieService.movie$ | async;"> 
+            
+                <div class="card mb-2 text-center w-100" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1520088258008-0f0a636a00a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" 
+                        class="card-img rounded" alt="...">
+                        <div class="card-img-overlay">
+                          
+                          <h2 class="card-title" style="font-size: 6vw;
+                          color: rgba(255, 255, 255, 0.800);">{{movie.title}}</h2>
+                          
+                          <p class="card-text" style="font-size: 3vw;
+                          color: rgba(255, 255, 255, 0.8);">{{movie.year}}</p>
+                        
+                        <ul class="list-group list-group-flush" style="margin-top: 20%">
+                          
+                          <li class="list-group-item rounded" 
+                          style="font-size: 1.8vw; 
+                          color: rgba(255, 255, 255, 0.8);
+                          background: transparent;
+                          border: transparent;
+                          font-style: bold;">Rating: {{movie.rating}}</li>
+
+                          <li class="list-group-item" 
+                          style="font-size: 1.3vw; 
+                          color: rgba(255, 255, 255, 0.8);
+                          border: transparent;
+                          background: transparent;"> <span style="font-size: 1.5vw">
+                          Why did I like the movie?</span> <br>{{movie.description}}</li>
+
+                        </ul>
+
+
+                    </div>
+                      </div>
+    
+                <button type="button" 
+                class="btn btn-warning" 
+                (click)="onEdit(movie)" 
+                style="margin: 10px 10px; width: 15%; color: white; font-size: 12px" 
+                >edit</button>
+
+                <button type="button" 
+                class="btn btn-danger"
+                (click)="onRemove(movie)" 
+                style="margin: 10px 10px; width: 15%; font-size: 12px">remove</button>
+    <!-- end of ng for -->  
+    </div>
+    
+
+</div>

@@ -1,18 +1,59 @@
+// Angular Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+// Components
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { AddMovieFormComponent } from './components/add-movie-form/add-movie-form.component';
+import { EditMovieFormComponent } from './components/edit-movie-form/edit-movie-form.component';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+// Services
+import { AuthService } from './services/auth.service';
+import { MovieService } from './services/movie.service';
+// AngularFire Modules
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+export const config = {
+  apiKey: "AIzaSyBqd5Vkcol2NNp1VtmGv5ToujDkisjaXbg",
+  authDomain: "favorite-movie-app-5360e.firebaseapp.com",
+  databaseURL: "https://favorite-movie-app-5360e.firebaseio.com",
+  projectId: "favorite-movie-app-5360e",
+  storageBucket: "favorite-movie-app-5360e.appspot.com",
+  messagingSenderId: "608220002148"
+};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MoviesComponent,
+    LoginComponent,
+    NavbarComponent,
+    AddMovieFormComponent,
+    EditMovieFormComponent,
+    LoadingSpinnerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireAuthModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(config),
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
